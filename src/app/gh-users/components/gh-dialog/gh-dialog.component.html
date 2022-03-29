@@ -1,0 +1,28 @@
+<div>
+    <h1 mat-dialog-title> Usuário do GitHub </h1>
+    <div mat-dialog-content>
+        <mat-progress-spinner color="accent" mode="indeterminate" *ngIf="user == null; else content">
+        </mat-progress-spinner>
+        <ng-template #content>
+            <figure>
+                <img [src]="user?.avatar_url" alt="foto GitHub">
+            </figure>
+            <div>
+                <p><i><u>Usuário: </u></i>  -- {{user?.login}}</p>
+                <p><i><u>Nome: </u></i> <a [href]="user?.html_url" target="_blank"> -- {{user?.name}} </a></p>
+                <p><i><u>Biografia:</u></i> -- {{user?.bio}} </p>
+                <p><i><u>Localização:</u></i> --  {{user?.location}} </p>
+                <p><i><u>Seguidores:</u></i> -- {{user?.followers}} </p>
+                <p><i><u>Seguindo:</u></i> -- {{user?.following}} </p>
+                <p><i><u>Data da conta:</u></i> -- {{user?.created_at}} </p>
+                <p><i><u>Atualização mais recente:</u></i> -- {{user?.updated_at}} </p>
+            </div>
+            <h2>Dados dos repositórios</h2>
+            <mat-card class="card-repo" *ngFor="let it of rep">
+                <p><i><u>>Nome do repositório:</u></i> <a [href]="it.html_url"> -- {{it?.name}}</a></p>
+                <p><i><u>Descrição: </u></i> -- {{it?.description}} </p>
+                <p><i><u>Forks: </u></i> -- {{it?.forks_count}}</p>
+            </mat-card>
+        </ng-template>
+    </div>
+</div>
